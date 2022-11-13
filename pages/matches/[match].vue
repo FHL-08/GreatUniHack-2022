@@ -38,7 +38,7 @@
         <div class="breaker">
             <h3> Match Stats </h3>
             <div class="col">
-              <div class="hometeam">
+              <div class="homeTeam">
               </div>
             </div>
             <div class="col">
@@ -55,16 +55,19 @@
 
             </div>
             <div class="col">
+
               <div id="matchTable" class="matches-table">
               </div>
+
             </div>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="main.js"></script>
+  
 </template>
+<script src="@/pages/matches.js"></script>
 
 <style scoped>
 @import url(https://fonts.googleapis.com/css2?family=Merriweather&family=Sacramento&display=swap);

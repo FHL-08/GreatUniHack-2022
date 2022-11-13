@@ -6,7 +6,15 @@ var awayTeamName = document.querySelector("#awayName");
 var lastMatchGoals = document.querySelector("#goals");
 var matchTable = document.querySelector("#matchTable");
 
+var matchTable = document.querySelector("#matchTable");
 
+function addMatchTitle(data){
+    var addMatchTitle = document.createElement('div');
+    matchTile.classList.add("match-tile");
+
+    
+
+}
 
 function getData(){
     fetch("https://v3.football.api-sports.io/fixtures?live=all", {
@@ -32,6 +40,8 @@ function getData(){
         // lastMatchGoals.innerHTML = goals['home']  + ":"  + goals['away'];
         homeTeamGoals = goals['home'];
         homeTeamGoals = goals['away'];
+
+        
     }))
     .catch(err => {
         console.log(err);
