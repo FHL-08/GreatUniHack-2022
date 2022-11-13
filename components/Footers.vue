@@ -1,7 +1,7 @@
 
 <template>
     <div class="container">
-        <footer class="py-3 my-4">
+        <footer class="footer mt-auto py-3 my-4 mb-2">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item">
                 <NuxtLink to="https://github.com/nuxt" no-rel> Github </NuxtLink>
@@ -27,11 +27,5 @@
     bottom: 0;
 }
 
-.bottom-container {
-    position: fixed;
-    bottom: 0;
-    margin: 0;
-    background-color: blue;
-    padding: 30px 0 20px;
-}
+
 </style>

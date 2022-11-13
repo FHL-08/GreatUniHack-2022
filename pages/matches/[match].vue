@@ -2,7 +2,7 @@
   <div id="background">
     <div class="container-fluid">
       <div class="row">
-        <div class="col">
+        <div class="col-sm-5">
           <div class="breaker">
             <div class="title-box">
                 <div class="hometeam">
@@ -14,7 +14,14 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-sm-2">
+          <div class="breaker">
+            <div class="title-box">
+             <h1> VS </h1>
+            </div>
+          </div>
+        </div>  
+        <div class="col-sm-5">
           <div class="breaker">
             <div class="title-box">
               <div class="awayteam">
@@ -29,10 +36,23 @@
       </div>
       <div class="row" style="position: relative;">
         <div class="breaker">
-            <h2> Random Bs </h2>
+            <h3> Match Stats </h3>
             <div class="col">
               <div class="hometeam">
               </div>
+            </div>
+            <div class="col">
+              <p> Possession </p>
+              <p> Shots </p>
+              <p> Shots on Goal </p>
+              <p> Corners Taken </p>
+              <p> Fouls </p>
+              <p> Pass </p>
+              <p> Pass Accuracy </p>
+              <p> Offsides </p>
+              <p> Yellow Cards </p>
+              <p> Red Cards </p>
+
             </div>
             <div class="col">
               <div class="awayteam">
