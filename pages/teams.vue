@@ -2,31 +2,32 @@
 <div id="background">
     <div class="breaker">
         <div class="title-box">
-            <img src="@/assets/images/players.jpg" alt="player"/>
-            
-            <div class="card">
-                <div class="card-header">
-                    Teams
-                </div>
-                <div class="card-body">
-                    <div class="row g-0 ml-12">
-                        <div class="col-md-4">
-                            <img src="@/assets/images/teams.jpg" alt="team"/>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"> Team Name </h5>
-                                <h6 class="card-text"> Coach: </h6>
-                                <p class="card-text"> Coach Name </p>
-                            </div>
-                        </div>
-                    </div> 
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                    <img src="@assets/images/Chelsea.jpeg" class="img-fluid rounded-start" alt="Team_Logo">
+                    </div>
+                    <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Chelsea (Team Name)</h5>
+                        <p class="card-text">Coach</p>
+                        <p class="card-text">Coach Name (API)</p>
+                    </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <div id="playerStats" class="player-stats">
-
+            <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Player 1</li>
+                <li class="list-group-item">Player 2</li>
+                <li class="list-group-item">Player 3</li>
+            </ul>
+            <div class="card-footer">
+                Team Members of Team Name
+            </div>
+            </div>
         </div>
 
     </div>

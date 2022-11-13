@@ -20,37 +20,12 @@
 
     </div>
     
-    <div class="bottom-container container-fluid">
-        <a class="footer-link" href="">LinkedIn</a>
-        <a class="footer-link" href="">Twitter</a>
-        <a class="footer-link" href="">Website</a>
-        <div ><p class = "copyright">© Football.</p></div>
-    </div>
 
 </div>
 
 </template>
 
 <style scoped>
-.bottom-container {
-    position: fixed;
-    bottom: 0;
-    margin: 0;
-    background-color: blue;
-    padding: 30px 0 20px;
-}
-
-a {
-    color: #eaf6f6;
-    font-family: 'Roberto', sans-serif;
-    margin: 10px;
-    text-decoration: none;
-}
-
-a:hover {
-    color: purple
-}
-
 #background {
     height: 100vh;
     background-image: url(@/assets/images/intro.jpg);
