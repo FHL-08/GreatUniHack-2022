@@ -2,11 +2,11 @@
 <template>
     <div class="container">
         <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3">
-            <li class="card-body">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item">
                 <NuxtLink to="https://github.com/nuxt" no-rel> Github </NuxtLink>
             </li>
-            <li class="card-body">
+            <li class="nav-item">
                 <NuxtLink to="https://linkedin.com/" no-rel> LinkedIn </NuxtLink>
             </li>
             <li class="card-body">
@@ -14,6 +14,7 @@
             </li>
             </ul>
         <div><p class = "copyright">© Football.</p></div>
+        </footer>
     </div>
 </template>
 
