@@ -13,7 +13,7 @@ const { pending, data: players } = useLazyFetch("/api/players");
 
     <h1 v-if="pending">Loading...</h1>
     <template v-else>
-      <NuxtLink :to="`/matches/${player.player.id}`" 
+      <NuxtLink :to="`/players/${player.player.id}`" 
         v-for="player in players"
         :key="player.player.id"
         class="text-black text-decoration-none">
@@ -27,7 +27,7 @@ const { pending, data: players } = useLazyFetch("/api/players");
               <div class="right_side">
                   <h5 id="f_name">First Name: {{player.player.name}}</h5>
                   <h5 id="l_name">Last Name: {{player.player.name}}</h5>
-                  <p id="team">Team: {{player.statistics.team.name}}</p>
+                  <p id="team">Team: {{player.statistics.team?.name}}</p>
                   <p id="age">Age: {{player.player.age}}</p>
                   <p id="date">Date: {{player.player.birth.date}}</p>
                   <p id="nation">Nationality: {{player.player.nationality}}</p>
@@ -38,11 +38,11 @@ const { pending, data: players } = useLazyFetch("/api/players");
           </div>
 
           <div id="playerStats" class="player-stats">
-            <p id="league">League: {{player.statistics.team.league.name}}</p>
-            <p id="assists">Goals: {{player.statistics.goals.total}}</p>
-            <p id="assists">Assists: {{player.statistics.goals.assists}}</p>
-            <p id="yellow_cards">Yellow Cards: {{player.statistics.cards.yellow}}</p>
-            <p id="red_cards">Red Cards: {{player.statistics.cards.red}}</p> 
+            <p id="league">League: {{player.statistics.team?.league.name}}</p>
+            <p id="assists">Goals: {{player.statistics.goals?.total}}</p>
+            <p id="assists">Assists: {{player.statistics.goals?.assists}}</p>
+            <p id="yellow_cards">Yellow Cards: {{player.statistics.cards?.yellow}}</p>
+            <p id="red_cards">Red Cards: {{player.statistics.cards?.red}}</p> 
           </div>
         </div>
       </div>

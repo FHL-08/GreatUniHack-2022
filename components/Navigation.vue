@@ -19,16 +19,13 @@
             <NuxtLink to="/" class="nav-link active" aria-current="page"> Home </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink to="/players/players" class="nav-link active"> Players </NuxtLink>
+            <NuxtLink to="/players" class="nav-link active"> Players </NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink to="/matches" class="nav-link active"> Matches </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink to="/leagues" class="nav-link active"> Leagues </NuxtLink>
-          </li>
-          <li class="nav-item">
-            <NuxtLink to="/teams" class="nav-link active"> Teams </NuxtLink>
+            <NuxtLink to="/leagues/leagues/" class="nav-link active"> Leagues </NuxtLink>
           </li>
         </ul>
         <form class="d-flex" role="search">

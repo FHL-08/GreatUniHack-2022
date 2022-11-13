@@ -17,7 +17,7 @@
 				"injured": false,
 				"photo": "https:\/\/media.api-sports.io\/football\/players\/2205.png"
 			},
-			"statistics": 
+			"statistics": [
 				{
 					"team": {
 						"id": 79,
@@ -92,7 +92,7 @@
 						"saved": null
 					}
 				}
-			
+			]
 		},
 		{
 			"player": {

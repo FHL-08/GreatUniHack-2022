@@ -6,8 +6,8 @@ const props = defineProps<{
 
 // emit changes to input
 const emit = defineEmits<{
-  (event: 'input', value: string): void;
-  (event: 'press'): void;
+  (event: "input", value: string): void;
+  (event: "press"): void;
 }>();
 </script>
 
@@ -20,7 +20,7 @@ const emit = defineEmits<{
 
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{name}}</h5>
+          <h5 class="card-title">{{ name }}</h5>
           <div class="col-8">
             <div class="input-group mb-3">
               <input
@@ -29,14 +29,17 @@ const emit = defineEmits<{
                 :placeholder="`${name}`"
                 :aria-label="`${name}`"
                 aria-describedby="basic-addon1"
-                @input="emit('input', $event.target.value)"
+                @input="event => $emit('input',
+                    (event.target as HTMLInputElement).value
+                  )"
               />
             </div>
 
-            <button type="button" class="btn btn-primary"
-            
-            @click="emit('press'
-            )">
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="$emit('press')"
+            >
               Search {{ name }}
             </button>
             <p class="card-text">

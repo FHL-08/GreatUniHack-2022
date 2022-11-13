@@ -1,13 +1,14 @@
 <template>
   <div>
     <Navigation />
-    <Footers />
 
     <div class="bg-dark">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
     </div>
+    
+    <Footers />
   </div>
 </template>
 

@@ -455,6 +455,7 @@ const errorHandler = (async function errorhandler(error, event) {
 });
 
 const _lazy_zMIkgf = () => Promise.resolve().then(function () { return index$7; });
+const _lazy_TBhL8L = () => Promise.resolve().then(function () { return _player_$1; });
 const _lazy_csCYEP = () => Promise.resolve().then(function () { return index$5; });
 const _lazy_uTx3L2 = () => Promise.resolve().then(function () { return index$3; });
 const _lazy_tNxX76 = () => Promise.resolve().then(function () { return statistics$1; });
@@ -463,6 +464,7 @@ const _lazy_vJlavq = () => Promise.resolve().then(function () { return renderer$
 
 const handlers = [
   { route: '/api/players', handler: _lazy_zMIkgf, lazy: true, middleware: false, method: undefined },
+  { route: '/api/players/:player', handler: _lazy_TBhL8L, lazy: true, middleware: false, method: undefined },
   { route: '/api/leagues', handler: _lazy_csCYEP, lazy: true, middleware: false, method: undefined },
   { route: '/api/fixtures', handler: _lazy_uTx3L2, lazy: true, middleware: false, method: undefined },
   { route: '/api/fixtures/:fixture/statistics', handler: _lazy_tNxX76, lazy: true, middleware: false, method: undefined },
@@ -554,6 +556,19 @@ const index$7 = /*#__PURE__*/Object.freeze({
   'default': index$6
 });
 
+const _player_ = defineEventHandler((event) => {
+  const data = fs.readFileSync("data/players.json", "utf8");
+  const json = JSON.parse(data);
+  return json.find(
+    (player) => player.player.id === parseInt(event.context.params.player)
+  );
+});
+
+const _player_$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _player_
+});
+
 const index$4 = defineEventHandler((event) => {
   const data = fs.readFileSync("data/leagues.json", "utf8");
   return JSON.parse(data);
@@ -567,16 +582,15 @@ const index$5 = /*#__PURE__*/Object.freeze({
 const index$2 = defineEventHandler((event) => {
   const data = fs.readFileSync("data/fixtures.json", "utf8");
   const query = getQuery(event);
-  if (query == null ? void 0 : query.q) {
+  if (query.q && query.q.length > 3) {
     const fixtures = JSON.parse(data);
     const filtered = fixtures.filter((fixture) => {
-      const includesHome = fixture.homeTeam.name.toLowerCase().includes(query.q.toLowerCase());
-      fixture.homeTeam.name.toLowerCase().includes(query.q.toLowerCase());
-      return includesHome;
+      var _a;
+      const includesHome = fixture.teams.home.name.toLowerCase().includes((_a = query.q) == null ? void 0 : _a.toLowerCase());
+      const includesAway = fixture.teams.home.name.toLowerCase().includes(query.q.toLowerCase());
+      return includesHome || includesAway;
     });
-    return {
-      body: JSON.stringify(filtered)
-    };
+    return filtered;
   }
   return JSON.parse(data);
 });

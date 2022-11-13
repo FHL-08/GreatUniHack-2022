@@ -1,5 +1,8 @@
 <script setup lang="ts">
-const { pending, data: fixtures } = useLazyFetch("/api/fixtures");
+const route = useRoute();
+const { pending, data: fixtures } = useLazyFetch(
+  `/api/fixtures?q=${(route.query.q as string) ?? ""}`
+);
 </script>
 
 <template>
@@ -13,38 +16,37 @@ const { pending, data: fixtures } = useLazyFetch("/api/fixtures");
 
     <h1 v-if="pending">Loading...</h1>
     <template v-else>
-      <NuxtLink :to="`/matches/${fixture.fixture.id}`" 
+      <NuxtLink
+        :to="`/matches/${fixture.fixture.id}`"
         v-for="fixture in fixtures"
         :key="fixture.fixture.id"
-        class="text-black text-decoration-none">
-      <div
-        class="card mb-3"
+        class="text-black text-decoration-none"
       >
-        <div class="card-body text-center">
-          <h1>{{ fixture.league.name }}</h1>
+        <div class="card mb-3">
+          <div class="card-body text-center">
+            <h1>{{ fixture.league.name }}</h1>
 
-          <div class="d-flex gap-3 justify-content-evenly">
-            <div class="d-flex align-middle">
-              <div>
-                <img :src="fixture.teams.home.logo" class="w-25" />
-                <p class="mb-0">Home</p>
-                <p class="fs-4">{{ fixture.teams.home.name }}</p>
+            <div class="d-flex gap-3 justify-content-evenly">
+              <div class="d-flex align-middle">
+                <div>
+                  <img :src="fixture.teams.home.logo" class="w-25" />
+                  <p class="mb-0">Home</p>
+                  <p class="fs-4">{{ fixture.teams.home.name }}</p>
+                </div>
+                <p class="fs-1">{{ fixture.goals.home }}</p>
               </div>
-              <p class="fs-1">{{fixture.goals.home}}</p>
-            </div>
-            <div class="d-flex align-middle">
-              <p class="fs-1">{{fixture.goals.away}}</p>
-              <div>
-                <img :src="fixture.teams.away.logo" class="w-25" />
-                <p class="mb-0">Away</p>
-                <p class="fs-4">{{ fixture.teams.away.name }}</p>
+              <div class="d-flex align-middle">
+                <p class="fs-1">{{ fixture.goals.away }}</p>
+                <div>
+                  <img :src="fixture.teams.away.logo" class="w-25" />
+                  <p class="mb-0">Away</p>
+                  <p class="fs-4">{{ fixture.teams.away.name }}</p>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
-      </div>
-    </NuxtLink>
+      </NuxtLink>
     </template>
   </div>
 </template>
