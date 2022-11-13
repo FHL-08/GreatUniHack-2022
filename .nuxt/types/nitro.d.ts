@@ -2,8 +2,11 @@
 declare module 'nitropack' {
   type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
   interface InternalApi {
+    '/api/players': Awaited<ReturnType<typeof import('../../server/api/players/index').default>>
     '/api/leagues': Awaited<ReturnType<typeof import('../../server/api/leagues/index').default>>
     '/api/fixtures': Awaited<ReturnType<typeof import('../../server/api/fixtures/index').default>>
+    '/api/fixtures/:fixture/statistics': Awaited<ReturnType<typeof import('../../server/api/fixtures/[fixture]/statistics').default>>
+    '/api/fixtures/:fixture': Awaited<ReturnType<typeof import('../../server/api/fixtures/[fixture]/index').default>>
     '/__nuxt_error': Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>
   }
 }

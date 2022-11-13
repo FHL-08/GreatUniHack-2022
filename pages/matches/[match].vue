@@ -1,5 +1,15 @@
+<script setup lang="ts">
+const route = useRoute();
+const { pending, data } = useLazyFetch(`/api/fixtures/${route.params.match as string}`);
+const { pending : pendingStatistics, data : statistic } = useLazyFetch(`/api/fixtures/${route.params.match as string}/statistics`);
+
+</script>
+
+
 <template>
-  <div id="background">
+  <h1 v-if="pending">Loading...</h1>
+  <h1 v-else-if="!data">Unknown match</h1>
+  <div id="background" v-else>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-5">
@@ -7,9 +17,9 @@
             <div class="title-box">
                 <div class="hometeam">
                   <h2> Home Team </h2>
-                  <img id="homeLogo" />
-                  <h3 id="homeName">Team Name </h3>
-                  <p id="homeGoals">GoalsPlaceHolder </p>
+                  <img id="homeLogo" :src="data.teams.home?.logo" />
+                  <h3 id="homeName">{{ data.teams.home.name}}</h3>
+                  <p id="homeGoals">{{ data.goals.home}}</p>
                 </div>
             </div>
           </div>
@@ -26,19 +36,29 @@
             <div class="title-box">
               <div class="awayteam">
                 <h2> Away Team </h2>
-                <img id="awayLogo" />
-                <h3 id="awayName">Team Name</h3>
-                <p id="awayGoals">GoalsPlaceHolder</p>
+                <img id="awayLogo" :src="data.teams.away?.logo"  />
+                <h3 id="awayName">{{ data.teams.away.name}}</h3>
+                <p id="awayGoals">{{ data.goals.away}}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row" style="position: relative;">
+      <div class="row" style="position: relative;" v-if="statistic">
         <div class="breaker">
             <h3> Match Stats </h3>
             <div class="col">
               <div class="homeTeam">
+                <!-- <p> {{statistic.statistics.type}} </p> 
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>-->
               </div>
             </div>
             <div class="col">
@@ -55,8 +75,17 @@
 
             </div>
             <div class="col">
-
-              <div id="matchTable" class="matches-table">
+              <div class="awayTeam">
+                <!----<p> {{statistic.statistics.type}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>
+                <p> {{statistic.statistics.value}} </p>-->
               </div>
 
             </div>

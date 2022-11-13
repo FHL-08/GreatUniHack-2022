@@ -19,7 +19,7 @@
             <NuxtLink to="/" class="nav-link active" aria-current="page"> Home </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink to="/players" class="nav-link active"> Players </NuxtLink>
+            <NuxtLink to="/players/players" class="nav-link active"> Players </NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink to="/matches" class="nav-link active"> Matches </NuxtLink>

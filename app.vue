@@ -3,7 +3,7 @@
     <Navigation />
     <Footers />
 
-    <div>
+    <div class="bg-dark">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>

@@ -454,13 +454,19 @@ const errorHandler = (async function errorhandler(error, event) {
   event.res.end(await res.text());
 });
 
-const _lazy_csCYEP = () => Promise.resolve().then(function () { return index$3; });
-const _lazy_uTx3L2 = () => Promise.resolve().then(function () { return index$1; });
+const _lazy_zMIkgf = () => Promise.resolve().then(function () { return index$7; });
+const _lazy_csCYEP = () => Promise.resolve().then(function () { return index$5; });
+const _lazy_uTx3L2 = () => Promise.resolve().then(function () { return index$3; });
+const _lazy_tNxX76 = () => Promise.resolve().then(function () { return statistics$1; });
+const _lazy_mGyclr = () => Promise.resolve().then(function () { return index$1; });
 const _lazy_vJlavq = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
+  { route: '/api/players', handler: _lazy_zMIkgf, lazy: true, middleware: false, method: undefined },
   { route: '/api/leagues', handler: _lazy_csCYEP, lazy: true, middleware: false, method: undefined },
   { route: '/api/fixtures', handler: _lazy_uTx3L2, lazy: true, middleware: false, method: undefined },
+  { route: '/api/fixtures/:fixture/statistics', handler: _lazy_tNxX76, lazy: true, middleware: false, method: undefined },
+  { route: '/api/fixtures/:fixture', handler: _lazy_mGyclr, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_vJlavq, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_vJlavq, lazy: true, middleware: false, method: undefined }
 ];
@@ -538,8 +544,40 @@ server.listen(listenAddress, () => {
   process.on("uncaughtException", (err) => console.error("[nitro] [dev] [uncaughtException]", err));
 }
 
-const index$2 = defineEventHandler((event) => {
+const index$6 = defineEventHandler((event) => {
+  const data = fs.readFileSync("data/players.json", "utf8");
+  return JSON.parse(data);
+});
+
+const index$7 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': index$6
+});
+
+const index$4 = defineEventHandler((event) => {
   const data = fs.readFileSync("data/leagues.json", "utf8");
+  return JSON.parse(data);
+});
+
+const index$5 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': index$4
+});
+
+const index$2 = defineEventHandler((event) => {
+  const data = fs.readFileSync("data/fixtures.json", "utf8");
+  const query = getQuery(event);
+  if (query == null ? void 0 : query.q) {
+    const fixtures = JSON.parse(data);
+    const filtered = fixtures.filter((fixture) => {
+      const includesHome = fixture.homeTeam.name.toLowerCase().includes(query.q.toLowerCase());
+      fixture.homeTeam.name.toLowerCase().includes(query.q.toLowerCase());
+      return includesHome;
+    });
+    return {
+      body: JSON.stringify(filtered)
+    };
+  }
   return JSON.parse(data);
 });
 
@@ -548,9 +586,22 @@ const index$3 = /*#__PURE__*/Object.freeze({
   'default': index$2
 });
 
+const statistics = defineEventHandler((event) => {
+  var _a;
+  const data = fs.readFileSync("data/statistics.json", "utf8");
+  const json = JSON.parse(data);
+  return (_a = json.find((statistic) => statistic.id === parseInt(event.context.params.fixture))) == null ? void 0 : _a.data;
+});
+
+const statistics$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': statistics
+});
+
 const index = defineEventHandler((event) => {
   const data = fs.readFileSync("data/fixtures.json", "utf8");
-  return JSON.parse(data);
+  const json = JSON.parse(data);
+  return json.find((fixture) => fixture.fixture.id === parseInt(event.context.params.fixture));
 });
 
 const index$1 = /*#__PURE__*/Object.freeze({

@@ -103,3 +103,112 @@ export interface Fixture {
     };
   };
 }
+
+export interface Statistic {
+  id: number
+  data: Array<{
+    team: {
+      id: number
+      name: string
+      logo: string
+    }
+    statistics: Array<{
+      type: string
+      value: any
+    }>
+  }>
+}
+
+export type Player = {
+  player: {
+    id: number
+    name: string
+    firstname: string
+    lastname: string
+    age: number
+    birth: {
+      date: string
+      place: string
+      country: string
+    }
+    nationality: string
+    height: string
+    weight: string
+    injured: boolean
+    photo: string
+  }
+  statistics: Array<{
+    team: {
+      id: number
+      name: string
+      logo: string
+    }
+    league: {
+      id: number
+      name: string
+      country: string
+      logo: string
+      flag: string
+      season: number
+    }
+    games: {
+      appearences: any
+      lineups: any
+      minutes: any
+      number: any
+      "posit{ion": string
+      rating: any
+      captain: boolean
+    }
+    substitutes: {
+      in: any
+      out: any
+      bench: any
+    }
+    shots: {
+      total: any
+      on: any
+    }
+    goals: {
+      total: any
+      conceded: any
+      assists: any
+      saves: any
+    }
+    passes: {
+      total: any
+      key: any
+      accuracy: any
+    }
+    tackles: {
+      total: any
+      blocks: any
+      interceptions: any
+    }
+    duels: {
+      total: any
+      won: any
+    }
+    dribbles: {
+      attempts: any
+      success: any
+      past: any
+    }
+    fouls: {
+      drawn: any
+      committed: any
+    }
+    cards: {
+      yellow: any
+      yellowred: any
+      red: any
+    }
+    penalty: {
+      won: any
+      commited: any
+      scored: any
+      missed: any
+      saved: any
+    }
+  }>
+}

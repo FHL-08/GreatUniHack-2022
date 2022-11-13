@@ -8,15 +8,46 @@ var matchTable = document.querySelector("#matchTable");
 
 var matchTable = document.querySelector("#matchTable");
 
-function addMatchTitle(data){
-    var addMatchTitle = document.createElement('div');
+function addMatchTile(data){
+    
+    var matchTile = document.createElement('div');
     matchTile.classList.add("match-tile");
 
-    
+    var homeTeam = document.createElement('div');
+    homeTeam.classList.add("team")
 
-}
+    var homeTileLogo = document.createElement('img');
+    var homeTileName = document.createElement('p');
 
-function getData(){
+    homeTileLogo.src = data['teams']['home']['logo'];
+    homeTileName.innerHTML = data['teams']['home']['name'];
+
+    var awayTeam = document.createElement('div');
+    awayTeam.classList.add("team")
+
+    var awayTileLogo = document.createElement('img');
+    var awayTileName = document.createElement('p');
+
+    awayTileLogo.src = data['teams']['home']['logo'];
+    awayTileName.innerHTML = data['teams']['home']['name'];
+
+    homeTeam.appendChild(homeTileLogo);
+    homeTeam.appendChild(homeTileName);
+
+    awayTeam.appendChild(awayTileLogo);
+    awayTeam.appendChild(awayTileLogo);
+
+    var score = document.createElement('p');
+    score.innerHTML = data['goals']['home'] + ":" + data['goals']['away'];
+
+    match.Tile.appendChild(homeTeam);
+    match.Tile.appendChild(score);
+    match.Tile.appendChild(awayTeam);
+
+    match.Tile.appendChild(matchTile);
+
+    }
+
     fetch("https://v3.football.api-sports.io/fixtures?live=all", {
         "method": "GET",
         "headers": {
@@ -41,9 +72,10 @@ function getData(){
         homeTeamGoals = goals['home'];
         homeTeamGoals = goals['away'];
 
-        
+        for(var i = 1; i< matchesList.length; i++){
+            addMatchTile(matchesList[i]);
+        }
     }))
     .catch(err => {
         console.log(err);
     });
-}

@@ -3,6 +3,13 @@ import MatchesImage from "@/assets/images/matches.jpg";
 import PlayersImage from "@/assets/images/players.jpg";
 import TeamsImage from "@/assets/images/teams.jpg";
 import LeaguesImage from "@/assets/images/player2.jpg";
+
+const router = useRouter();
+
+const matchQuery = ref("");
+const searchMatches = () => {
+  router.push({ name: "matches", query: { q: matchQuery.value } });
+};
 </script>
 
 <template>
@@ -15,14 +22,17 @@ import LeaguesImage from "@/assets/images/player2.jpg";
     </div>
   </div>
 
-  <div class="container">
+  <div class="container bg-dark">
     <!-- Matches-->
     <IntroSearchCard
       name="Matches"
       :image="MatchesImage"
       class="mb-5"
       style="margin-top: -5rem"
+      @search="matchQuery = $event"
+      @press="searchMatches"
     />
+    {{matchQuery}}
     <!-- Leagues -->
     <IntroSearchCard name="Leagues" :image="PlayersImage" class="mb-5" />
     <!-- Teams -->

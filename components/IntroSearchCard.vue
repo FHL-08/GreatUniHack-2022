@@ -3,10 +3,16 @@ const props = defineProps<{
   name: string;
   image: string;
 }>();
+
+// emit changes to input
+const emit = defineEmits<{
+  (event: 'input', value: string): void;
+  (event: 'press'): void;
+}>();
 </script>
 
 <template>
-  <div class="card">
+  <div class="card bg-light">
     <div class="row g-0">
       <div class="col-md-4">
         <img :src="image" class="img-fluid rounded-start-lg" :alt="`${name}`" />
@@ -14,7 +20,7 @@ const props = defineProps<{
 
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Leagues</h5>
+          <h5 class="card-title">{{name}}</h5>
           <div class="col-8">
             <div class="input-group mb-3">
               <input
@@ -23,10 +29,14 @@ const props = defineProps<{
                 :placeholder="`${name}`"
                 :aria-label="`${name}`"
                 aria-describedby="basic-addon1"
+                @input="emit('input', $event.target.value)"
               />
             </div>
 
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary"
+            
+            @click="emit('press'
+            )">
               Search {{ name }}
             </button>
             <p class="card-text">
