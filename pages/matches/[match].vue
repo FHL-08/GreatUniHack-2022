@@ -7,9 +7,9 @@
             <div class="title-box">
                 <div class="hometeam">
                   <h2> Home Team </h2>
-                  <img class="homeLogo" />
-                  <h3 class="home.team">Team Name </h3>
-                  <p class="homegoals">GoalsPlaceHolder </p>
+                  <img id="homeLogo" />
+                  <h3 id="homeName">Team Name </h3>
+                  <p id="homeGoals">GoalsPlaceHolder </p>
                 </div>
             </div>
           </div>
@@ -26,9 +26,9 @@
             <div class="title-box">
               <div class="awayteam">
                 <h2> Away Team </h2>
-                <img class="awayLogo" />
-                <h3 class="away.team">Team Name</h3>
-                <p class="awaygoals">GoalsPlaceHolder</p>
+                <img id="awayLogo" />
+                <h3 id="awayName">Team Name</h3>
+                <p id="awayGoals">GoalsPlaceHolder</p>
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@
 
             </div>
             <div class="col">
-              <div class="awayteam">
+              <div id="matchTable" class="matches-table">
               </div>
             </div>
         </div>
