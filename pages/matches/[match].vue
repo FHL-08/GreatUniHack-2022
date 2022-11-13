@@ -62,6 +62,8 @@
       </div>
     </div>
   </div>
+
+  <script src="main.js"></script>
 </template>
 
 <style scoped>
