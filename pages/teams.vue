@@ -1,5 +1,5 @@
 <template>
-    <div id="background">
+<div id="background">
     <div class="breaker">
         <div class="title-box">
             <img src="@/assets/images/players.jpg" alt="player"/>
@@ -30,14 +30,6 @@
         </div>
 
     </div>
-    
-    <div class="bottom-container container-fluid">
-        <a class="footer-link" href="">LinkedIn</a>
-        <a class="footer-link" href="">Twitter</a>
-        <a class="footer-link" href="">Website</a>
-        <div ><p class = "copyright">© Football.</p></div>
-    </div>
-
 </div>
 
 </template>
