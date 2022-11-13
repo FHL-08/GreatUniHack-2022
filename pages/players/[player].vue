@@ -12,7 +12,7 @@ const { pending, data } = useLazyFetch(`/api/players/${route.params.player as st
               <img :src="data.player.photo" class="w-25" alt="player"/>
               
               <div class="right_side">
-                  <h5 id="f_name">First Name: {{data.player.name}}</h5>
+                  <h5 id="f_name">First Name: {{data.player}}</h5>
                   <h5 id="l_name">Last Name: {{data.player.name}}</h5>
                   <p id="team">Team: {{data.statistics.team.name}}</p>
                   <p id="age">Age: {{data.player.age}}</p>
