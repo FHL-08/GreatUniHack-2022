@@ -1,42 +1,38 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { pending, data: leagues } = useLazyFetch("/api/leagues");
+</script>
 
 <template>
-  <body id="header" class="container d-flex">
-    <div class="bg-light border rounded-lg" style="height: 20%; width: 70%">
-      <div class="row">
-        <div class="col-5">
-          <h1 class="text-center">Team 1</h1>
-          <img
-            src="@/assets/images/players.jpg"
-            alt="Matches"
-            height="auto"
-            width="auto"
-            class="img-fluid rounded"
-          />
-        </div>
+  <div id="match Table" class="matches-table"></div>
 
-        <div class="col-2 align-center">Vs</div>
+  <div class="mt-10 container">
+    <h1 v-if="pending">Loading...</h1>
+    <template v-else>
+      <div
+        v-for="league in leagues?.response"
+        :key="league.league.id"
+        class="card card-body mb-3"
+      >
+        <h1>
+          {{ league.league.name }}
 
-        <div class="col-5">
-          <h1 class="text-center">Leagues</h1>
-          <img
-            src="@/assets/images/players.jpg"
-            alt="Matches"
-            height="auto"
-            width="auto"
-            class="img-fluid rounded"
-          />
+          <small class="small">
+            <span class="badge bg-secondary">{{ league.league.type }}</span>
+            <span class="badge bg-secondary">{{ league.country.name }}</span>
+          </small>
+        </h1>
+
+        <h2>Seasons</h2>
+        <div
+          v-for="season in league.seasons"
+          :key="season.start"
+          class="card mb-2"
+        >
+          <h3>{{ season.year }} ({{ season.start }} - {{ season.end }})</h3>
+          <p>Current: {{ season.current }}</p>
+          <p class="pre">{{ season }}</p>
         </div>
       </div>
-    </div>
-  </body>
+    </template>
+  </div>
 </template>
-
-<style scoped>
-#header {
-  background-image: url(@/assets/images/intro.jpg);
-  /* opacity: 0.8; */
-  background-size: cover;
-  height: 600px;
-}
-</style>

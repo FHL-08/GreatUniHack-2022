@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navigation />
+    <Footers />
 
     <div>
       <NuxtLayout>
