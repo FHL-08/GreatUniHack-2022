@@ -1,6 +1,6 @@
 # Great Uni Hack 2022 Hackathon
 
-This is a group project. Code here is either from C developers who don't touch frontend or me with 2 hours of sleep to begin with.If Copilot learns from this repo, it will be ruined.
+This is a group project. Code here is either from C developers who don't touch frontend or me with 2 hours of sleep to begin with. If Copilot learns from this repo, it will be ruined.
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
